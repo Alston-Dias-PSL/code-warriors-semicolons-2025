@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "vaulted-arcana-454506-a9",
+  "private_key_id": "0a81478ead1fd760b5e15e5a9120b7fb5441f52a",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDQm5y2XG/uCRiC\nmZBrcFqVaUcNbctJdVAoD9m8XCCkh869gooncd/lk40OP7aaNfJmar5U869JJFDc\nYOTxgFokm8IrPEE6I5Kq6xQBbcxVp1+zpb6z3sIFAjg8FWx7eXd1WAXuisNM+R4h\nCTSHQ3uQf7KFTdJkbPpLZmLHX26x2cjS3EGBDR2EYPJgrEdfliAQTC95EWAl1mlL\n0G4tJ03x5uF6CdISy83nLe49ysEY5zaE96CZCQkvCT49AKF60eZxk8qzJdVGiGGD\n2EA+3UQAJxJpM/kzexVzHE91G7/KrQhXKz97Fsnf6XwB7nbWc/P0pxwzXcUcNamz\n+m5ZaDEHAgMBAAECggEAJENQyDCkcnQZUyafwNV8oal15QM3ifL/Np+ewYwgTomf\nKjlli7rTaYSvShFQTFlhZGVc5cagq23JMq4TTln6EZAT/lEQo6soZVbNGPx9v0wD\nqmZ/EqSABL/gh61PuN0iI39kNJXhomFR1/tSKstT0Qgpv9uJ3dRF5FKNjEvuIbNC\nR/PjjssCBzp4IKovOjOISSF6xU+//E2tH13xEsRrR1g0SfhNMVIj9RuRH6W7mv/Z\nnjehUltpASodzrIrxzWEfso2LEyZ9NIWKUHxB4OPs3eGUHVPDF8glGNzN04bOVJa\nuVHmEwA1WqWFN4FGkrxHOjBoyuEYjnulYUyxKGmNgQKBgQDqhAxxkBYzZ4WRI4NV\nToEMjUack+GKbqDd/deiLbEKWEJmByrdZzgdU5AEm5+HSd19rpBZZHGXnKq1TAc9\ngaTwL37OgX/ln76ujpi/30Hd6p1GxZ0Kq92uYoMOxsGGk0wYJ9Eag8Iegd60kXK2\nNv5GxK2wWuhWKfe+8xJq83XkgQKBgQDjt/XsN4KwCuQ5ssQH9Lq7bvAjhdeeWJpZ\nsvRql83DynYCZNjXCiCH//LY92pf6gmsqCFWJh12nWN3yfnz755sneed/t50vMCT\nhlFqYvyjCS93nuEQLQfWVEqog3K9FqukS/dR1ONALE43pbp6b0kM0wrwEbeW13O0\nSQW1pYAxhwKBgD29wiDr1Ex4RrvtY5hD8MnDMAHtFQYDFisbt3elG+UjU2fVHz3m\n/OkLpPDxn9BYbA24tZwzS4yk3HSarZVN2oS5nGL1yRxFMEh4llJ9jrPEHuARCsVS\ndiyBFwv+29h4UyJQ6UZXxfWOL3nOiSrb05oCEdBKPrzgk68cA49QxYsBAoGBALBb\nMP7ewryZwsSYmM7cjp1IPnwUVLeSQP+E41uF81pVeu1BstlfQ3BwHWBAxMZBV3q6\nvw6b+Cd7nqQP7R8pDRVreQxYbWoVIENgO79bp/KP044doonHhhFMOIGnQ34Dh6x3\nFLPwXoq9hVn9ZJ0bgISJESh5YChW9YnDH8Pcx5oTAoGBALnElQLrY71C6UvQuJBW\net9DanfysNtL8wtmqgF0/vH/FXUeRyx2VXYLftOsHFT58dieiNU9cvF/w1nPc+BS\nkiQWNAtTlija2+zsMDBeAAUup1HBe67KfoiSclEJE9qnkCO+SQuwxnvjQEjeHZ/M\nCg7Zkb7Nz7Hm7SlTwS57F1CM\n-----END PRIVATE KEY-----\n",
+  "client_email": "flask-gcp-storage@vaulted-arcana-454506-a9.iam.gserviceaccount.com",
+  "client_id": "112868564398823634527",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/flask-gcp-storage%40vaulted-arcana-454506-a9.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
