@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from openai import OpenAI
 import requests, os
+from google.cloud import storage
 import json
 import csv
 from PyPDF2 import PdfReader
@@ -9,9 +10,58 @@ from docx import Document
 app = Flask(__name__)
 
 # OpenAI API details
-API_KEY = "xxxxxxxxxxxxxxxx"  # Replace with your OpenAI API key
+API_KEY = "sk-402e3d0136274443925a21"  # Replace with your OpenAI API key
 URL = "https://zxz2wysnky.ap-south-1.awsapprunner.com"          # Replace with your base URL
 MODEL = "amazon.nova-pro-v1:0-AI_Team"
+
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "C:/Users/PranavNaik/Desktop/code-warriors-semicolons-2025/vaulted-arcana.json"
+BUCKET_NAME = "semicolons-bucket"
+
+def upload_file_to_gcp(file, bucket_name):
+    """Uploads the file to GCP and makes it publicly accessible"""
+    
+    # Initialize GCP storage client
+    client = storage.Client()
+    bucket = client.bucket(bucket_name)
+    
+    # Create a new blob (file) in the bucket
+    blob = bucket.blob(file.filename)
+    
+    # Upload the file to the bucket
+    blob.upload_from_file(file)
+
+    # Make the file publicly accessible
+    blob.make_public()
+
+    # Get the public URL
+    public_url = blob.public_url
+
+    return public_url
+
+
+@app.route('/upload', methods=['POST'])
+def upload_file():
+    """API endpoint to upload a file and return the public URL"""
+    
+    if 'file' not in request.files:
+        return jsonify({"error": "No file part"}), 400
+
+    file = request.files['file']
+
+    if file.filename == '':
+        return jsonify({"error": "No selected file"}), 400
+
+    try:
+        # Upload the file and get the public URL
+        public_url = upload_file_to_gcp(file, BUCKET_NAME)
+        
+        return jsonify({
+            "message": "File uploaded successfully!",
+            "public_url": public_url
+        })
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 # Initialize OpenAI client
 client = OpenAI(api_key=API_KEY, base_url=URL)
@@ -26,59 +76,43 @@ def extract_text_from_file(file_path):
     Extracts and prints the content of a local file as a string.
     Supports: TXT, JSON, CSV, PDF, DOCX.
     """
-    print ("checkpoint 1", file_path)
+
     if not os.path.isfile(file_path):
         print(f"File '{file_path}' not found.")
         return
 
-    print ("checkpoint 2")
     ext = os.path.splitext(file_path)[-1].lower()
 
-    print ("checkpoint 3")
     try:
-        print ("checkpoint 4")
         if ext == '.txt':
             with open(file_path, 'r', encoding='utf-8') as f:
                 content = f.read()
         
-            print ("checkpoint 5")
         elif ext == '.json':
-            print ("checkpoint 6")
             with open(file_path, 'r', encoding='utf-8') as f:
                 content = json.dumps(json.load(f), indent=4)
-                print ("checkpoint 7")
 
         elif ext == '.csv':
-            print ("checkpoint 8")
             with open(file_path, 'r', encoding='utf-8') as f:
                 reader = csv.reader(f)
                 content = "\n".join([", ".join(row) for row in reader])
-                print ("checkpoint 9")
 
         elif ext == '.pdf':
-            print ("checkpoint 10")
             content = ""
-            print ("checkpoint 11")
             with open(file_path, 'rb') as f:
                 reader = PdfReader(f)
-                print ("checkpoint 12")
                 for page in reader.pages:
                     content += page.extract_text() or ""
-                    print ("checkpoint 13")
 
         elif ext == '.docx':
-            print ("checkpoint 14")
             doc = Document(docx=file_path)
-            print ("checkpoint 15")
             content = "\n".join([para.text for para in doc.paragraphs])
-            print ("checkpoint 16")
 
         else:
             content = f"Unsupported file format: {ext}"
 
         # Print the extracted content
         print("\n--- Extracted Text ---\n")
-        print ("checkpoint 17")
         return content
 
     except Exception as e:
