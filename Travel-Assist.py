@@ -10,7 +10,7 @@ from docx import Document
 app = Flask(__name__)
 
 # OpenAI API details
-API_KEY = "sk-402e3d0136274443925a21"  # Replace with your OpenAI API key
+API_KEY = "XXXXXXXXXXXXXXXXXX"  # Replace with your OpenAI API key
 URL = "https://zxz2wysnky.ap-south-1.awsapprunner.com"          # Replace with your base URL
 MODEL = "amazon.nova-pro-v1:0-AI_Team"
 
